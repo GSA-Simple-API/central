@@ -1,0 +1,23 @@
+[
+    {
+        "id": "1",
+        "name": "People API",
+        "repo": "api-people",
+        "image": "https://s3.amazonaws.com/kinlane-productions/bw-icons/bw-people.JPG",
+        "description": "This is a people API template."
+    },
+    {
+        "id": "2",
+        "name": "Offices API",
+        "repo": "api-offices",
+        "image": "https://s3.amazonaws.com/kinlane-productions/bw-icons/bw-office.jpg",
+        "description": "This is a people API template"
+    },
+    {
+        "id": "3",
+        "name": "3 Factor X API",
+        "repo": "api-3-factor-x",
+        "image": "https://s3.amazonaws.com/kinlane-productions/bw-icons/3-factor-x.jpeg",
+        "description": "This is a 3 factor x API template"
+    }
+]

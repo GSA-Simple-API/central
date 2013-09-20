@@ -1,13 +1,10 @@
 <!DOCTYPE html>
 <html>
   <head>
-  
-    <title>Simple API</title>  
-  
     <meta charset='utf-8'>
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
     <meta http-equiv="Pragma" content="no-cache" />
-    <meta http-equiv="Expires" content="-1" />
+    <meta http-equiv="Expires" content="-1" />    
     
     <link href='https://fonts.googleapis.com/css?family=Chivo:900' rel='stylesheet' type='text/css'>
     
@@ -22,7 +19,7 @@
     <!--[if lt IE 9]>
     <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
-    
+    <title>Simple API</title>
   </head>
 
   <body>
@@ -44,40 +41,14 @@
 
         <section id="main_content">
          
-             <h1>API Gallery</h1>
+              <h1>oAuth</h1>
+              
+              <p>Putting in using redirect option!</p>
              
-            <script id="apiListingTemplate" type="text/template">       
-                <li>
-                    <a href="http://simple-api.github.io/{{repo}}"><img src="{{image}}" width="200" align="left" style="padding: 15px;" /></a>
-                    <a href="http://simple-api.github.io/{{repo}}" style="color: #000;"><strong>{{name}}</strong></a> - {{description}}</a>
-                </li>                                                                                               
-            </script>
-            
-            <div class="apiListingContainer">
-                 <ul id="apiListing"></ul>
-            </div>  
-            
-            <!--API Templates Listing JavaScript--->
-            <script type="text/javascript">
-            
-            // Requires Mustache - http://mustache.github.io/
-            
-            function listAPIs()
-                {
-                $.getJSON('templates.json', function(data) {
-                     $.each(data, function(key, val) {
-                        var template = $('#apiListingTemplate').html();
-                        var html = Mustache.to_html(template, val);
-                        $('#apiListing').append(html);                          
-                        });
-                    });
-                } 
-            </script>
-    
-            <script type="text/javascript">
-                listAPIs();
-            </script>         
-                  
+              <script type="text/javascript">          
+                OAuth.redirect('github', "http://simple-api.github.io/simple-api-central/working.html"); 
+              </script>
+
           </section>
 
         <footer>
