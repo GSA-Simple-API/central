@@ -47,14 +47,14 @@
              <h1>API Gallery</h1>
              
             <script id="apiListingTemplate" type="text/template">       
-                <li>
-                    <a href="http://simple-api.github.io/{{repo}}"><img src="{{image}}" width="200" align="left" style="padding: 15px;" /></a>
-                    <a href="http://simple-api.github.io/{{repo}}" style="color: #000;"><strong>{{name}}</strong></a> - {{description}}</a>
-                </li>                                                                                               
+                <tr>
+                    <td width="100" valign="top" align="center"><a href="http://simple-api.github.io/{{repo}}"><img src="{{image}}" width="100" align="left" style="padding: 15px;" /></a></td>
+                    <td width="100" valign="top" align="left"><a href="http://simple-api.github.io/{{repo}}" style="color: #000;"><strong>{{name}}</strong></a> - {{description}}</a></td>
+                </tr>                                                                                               
             </script>
             
             <div class="apiListingContainer">
-                 <ul id="apiListing"></ul>
+                 <table id="apiListing"></table>
             </div>  
             
             <!--API Templates Listing JavaScript--->
