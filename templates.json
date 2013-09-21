@@ -3,21 +3,21 @@
         "id": "1",
         "name": "People API",
         "repo": "api-people",
-        "image": "https://s3.amazonaws.com/kinlane-productions/bw-icons/bw-people.JPG",
+        "image": "https://s3.amazonaws.com/kinlane-productions/bw-icons/bw-people.png",
         "description": "This is a people API template."
     },
     {
         "id": "2",
         "name": "Offices API",
         "repo": "api-offices",
-        "image": "https://s3.amazonaws.com/kinlane-productions/bw-icons/bw-office.jpg",
+        "image": "https://s3.amazonaws.com/kinlane-productions/bw-icons/bw-office.png",
         "description": "This is a people API template"
     },
     {
         "id": "3",
         "name": "3 Factor X API",
         "repo": "api-3-factor-x",
-        "image": "https://s3.amazonaws.com/kinlane-productions/bw-icons/3-factor-x.jpeg",
+        "image": "https://s3.amazonaws.com/kinlane-productions/bw-icons/3-factor-x.png",
         "description": "This is a 3 factor x API template"
     }
 ]
