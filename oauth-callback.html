@@ -64,9 +64,11 @@
                     
                     repo.read('gh-pages','manifest.json',function(err, data){                   
                   
-                    $("#displayMe").append(data); 
+                    alert(data);
+                  
+                   // $("#displayMe").append(data); 
                             
-                    repo.write('gh-pages','manifest.json', 'goodbye!', 'Saving JSON from editor', function(err) {});                  
+                    //repo.write('gh-pages','manifest.json', 'goodbye!', 'Saving JSON from editor', function(err) {});                  
                                   
                                   
                      });
