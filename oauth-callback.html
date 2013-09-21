@@ -16,6 +16,8 @@
     <script src="javascripts/oauth.js" type="text/javascript"></script>
     <script src="javascripts/mustache.js" type="text/javascript"></script>
     <script src="javascripts/utilities.js" type="text/javascript"></script>
+    <script src="javascripts/tabletop.js" type="text/javascript"></script>
+    <script src="javascripts/github.js" type="text/javascript"></script>
     
     <!--[if lt IE 9]>
     <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -51,11 +53,27 @@
                 OAuth.callback('github', function(err, result) {
                   //handle error with err
                   //use result.access_token in your API request
-                  alert(result.access_token);
+                  //alert(result.access_token);
+                  
+                    var github = new Github({
+                        token: result.access_token,
+                        auth: "oauth"
+                        });
+              
+                    var repo = github.getRepo('simple-api', 'central');
+                    
+                    repo.read('gh-pages','manifest.json',function(err, data){                   
+                  
+                    $("#displayMe").append(data); 
+                            
+                    repo.write('gh-pages','manifest.json', 'goodbye!', 'Saving JSON from editor', function(err) {});                  
+                                  
+                                  
+                     });
                 });
               </script>              
               
-           
+            <div id="displayMe"></div>
 
           </section>
 
