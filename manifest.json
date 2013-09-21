@@ -1,1 +1,6 @@
-goodbye!
+[
+    {
+        "account": "simple-api",
+        "template": "simple-api"
+    }
+]
