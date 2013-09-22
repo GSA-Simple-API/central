@@ -81,19 +81,19 @@
                 $.getJSON("http://api.gsa.apievangelist.com/utility/updateuser/?user="+$UserLogin, 
                         function(data) {
                         var response = data.response;
-                        $("#displayMe").append(response + "<br />"); 
+                        //$("#displayMe").append(response + "<br />"); 
                     });  
                     
                 $.getJSON("http://api.gsa.apievangelist.com/utility/updateuserapis/?user="+$UserLogin, 
                         function(data) {
                         var response = data.response;
-                        $("#displayMe").append(response + "<br />"); 
+                       // $("#displayMe").append(response + "<br />"); 
                     });       
                                                        
                 $.getJSON("http://api.gsa.apievangelist.com/utility/updateindex", 
                         function(data) {
                         var response = data.response;
-                        $("#displayMe").append(response + "<br />"); 
+                        //$("#displayMe").append(response + "<br />"); 
                     }); 
                         
                 redirectURL = "http://" + $UserLogin + ".github.io/" + $repo;
