@@ -22,5 +22,9 @@
   {
     "account": "kinlane",
     "template": "api-3-factor-x"
+  },
+  {
+    "account": "kinlane2",
+    "template": "api-people"
   }
 ]
