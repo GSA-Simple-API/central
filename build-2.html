@@ -112,7 +112,7 @@
                         var repo = github.getRepo('simple-api', $repo);
                         repo.fork(function(err) {
                             
-                            $("#displayMe").append("forking " + $repo + "<br />");                                        
+                            //$("#displayMe").append("forking " + $repo + "<br />");                                        
                          
                             redirectURL = "http://simple-api.github.io/central/build-3.html?repo=" + $repo + "&oAuth_Token=" + $oAuth_Token + "&account=" + $UserLogin;                                                                                                                        
                             setTimeout(callback(redirectURL), 5000); 
