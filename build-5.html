@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="-1" />    
+    
+    <link href='https://fonts.googleapis.com/css?family=Chivo:900' rel='stylesheet' type='text/css'>
+    
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="stylesheets/pygment_trac.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print" />
+    
+    <script src="http://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>
+    <script src="javascripts/oauth.js" type="text/javascript"></script>
+    <script src="javascripts/mustache.js" type="text/javascript"></script>
+    <script src="javascripts/utilities.js" type="text/javascript"></script>
+    <script src="javascripts/tabletop.js" type="text/javascript"></script>
+
+    <script src="javascripts/underscore-min.js" type="text/javascript"></script>
+    <script src="javascripts/base64.js" type="text/javascript"></script>
+    <script src="javascripts/github.js" type="text/javascript"></script>
+    
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <title>Simple API</title>
+  </head>
+
+  <body>
+    <div id="container">
+      <div class="inner">
+
+        <header>
+          <h1><a href="index.html">Simple API</a></h1>
+          <h2>This is a simple API</h2>
+        </header>
+
+        <section id="downloads" class="clearfix">
+          <a href="https://github.com/simple-api/simple-api-control/zipball/master" id="download-zip" class="button"><span>Download .zip</span></a>
+          <a href="https://github.com/simple-api/simple-api-control/tarball/master" id="download-tar-gz" class="button"><span>Download .tar.gz</span></a>
+          <a href="https://github.com/simple-api/simple-api-control/" id="view-on-github" class="button"><span>View on GitHub</span></a>
+        </section>
+
+        <hr>
+
+        <section id="main_content">
+         
+              <h1>Completing Setup</h1>
+              
+              <p>The API setup is complete, and you will not be taken to your custom setup API repository.</p>
+              
+              <p align="center"><img src="https://s3.amazonaws.com/kinlane-productions/loading.gif" id="loading" width="150" /></p>
+              
+              <script type="text/javascript">  
+              
+                function callback(url){
+                    return function(){
+                        location.href=url;
+                    }
+                }  
+                  
+                $UserLogin = getUrlVar('account'); 
+                              
+                $oAuth_Token = getUrlVar('oAuth_Token');  
+                
+                $repo = getUrlVar('repo'); 
+                $cleanrepo = $repo.replace("api-","");
+
+                var github = new Github({
+                    token: $oAuth_Token,
+                    auth: "oauth"
+                    });
+          
+                var repo = github.getRepo('simple-api', 'central'); 
+
+               $("#displayMe").append("connecting to " + $UserLogin + " account.<br />");                                      
+                                                           
+                // Run core update
+                $.getJSON("http://api.gsa.apievangelist.com/utility/updateuser/?user="+$UserLogin, 
+                        function(data) {
+                        var response = data.response;
+                        $("#displayMe").append(response + "<br />"); 
+                    });  
+                    
+                $.getJSON("http://api.gsa.apievangelist.com/utility/updateuserapis/?user="+$UserLogin, 
+                        function(data) {
+                        var response = data.response;
+                        $("#displayMe").append(response + "<br />"); 
+                    });       
+                                                       
+                $.getJSON("http://api.gsa.apievangelist.com/utility/updateindex", 
+                        function(data) {
+                        var response = data.response;
+                        $("#displayMe").append(response + "<br />"); 
+                    }); 
+                        
+                redirectURL = "http://" + $UserLogin + ".github.io/" + $repo;
+                setTimeout(callback(redirectURL), 2000);                                                                                    
+              </script>              
+              
+            <div id="displayMe"></div>
+
+          </section>
+
+        <footer>
+          Simple-api is maintained by <a href="https://github.com/simple-api">simple-api</a><br>
+          This page was generated by <a href="http://pages.github.com">GitHub Pages</a>. Tactile theme by <a href="https://twitter.com/jasonlong">Jason Long</a>.
+        </footer>
+
+        
+      </div>
+    </div>
+  </body>
+</html>

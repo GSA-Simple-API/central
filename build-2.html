@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="-1" />    
+    
+    <link href='https://fonts.googleapis.com/css?family=Chivo:900' rel='stylesheet' type='text/css'>
+    
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="stylesheets/pygment_trac.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print" />
+    
+    <script src="http://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>
+    <script src="javascripts/oauth.js" type="text/javascript"></script>
+    <script src="javascripts/mustache.js" type="text/javascript"></script>
+    <script src="javascripts/utilities.js" type="text/javascript"></script>
+    <script src="javascripts/tabletop.js" type="text/javascript"></script>
+
+    <script src="javascripts/underscore-min.js" type="text/javascript"></script>
+    <script src="javascripts/base64.js" type="text/javascript"></script>
+    <script src="javascripts/github.js" type="text/javascript"></script>
+    
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <title>Simple API</title>
+  </head>
+
+  <body>
+    <div id="container">
+      <div class="inner">
+
+        <header>
+          <h1><a href="index.html">Simple API</a></h1>
+          <h2>This is a simple API</h2>
+        </header>
+
+        <section id="downloads" class="clearfix">
+          <a href="https://github.com/simple-api/simple-api-control/zipball/master" id="download-zip" class="button"><span>Download .zip</span></a>
+          <a href="https://github.com/simple-api/simple-api-control/tarball/master" id="download-tar-gz" class="button"><span>Download .tar.gz</span></a>
+          <a href="https://github.com/simple-api/simple-api-control/" id="view-on-github" class="button"><span>View on GitHub</span></a>
+        </section>
+
+        <hr>
+
+        <section id="main_content">
+         
+              <h1>Forking API Repository</h1>
+              
+              <p>The API repository is now being forked under your account / organization.</p>
+              
+              <p align="center"><img src="https://s3.amazonaws.com/kinlane-productions/loading.gif" id="loading" width="150" /></p>
+              
+              <script type="text/javascript"> 
+              
+                function callback(url){
+                    return function(){
+                        location.href=url;
+                    }
+                }              
+              
+                $UserLogin = getUrlVar('account'); 
+                $repo = getUrlVar('repo');   
+                $cleanrepo = $repo.replace("api-","");
+             
+                $oAuth_Token = getUrlVar('oAuth_Token');  
+                  
+                var github = new Github({
+                    token: $oAuth_Token,
+                    auth: "oauth"
+                    });
+          
+                var repo = github.getRepo('simple-api', 'central');
+                
+                var $Manifest = "";
+                var $User = "";
+                
+                // Getting manifest
+                repo.read('gh-pages','manifest.json',function(err, data){                   
+                        
+                    $Manifest = jQuery.parseJSON(data);
+ 
+                    $Exists = 0;
+                    $.each($Manifest, function(s, $EachManifest) {
+                       if($EachManifest['account'] == $UserLogin && $EachManifest['template'] == $repo){
+                        $Exists = 1;                                   
+                        }   
+                    });    
+                       
+               $AddManifest = {};
+               $AddManifest['account'] = $UserLogin;
+               $AddManifest['template'] = $repo;
+               if($Exists==0)
+                    {
+                    $Manifest.push($AddManifest);    
+                    }
+                       
+               $$ManifestJSON = JSON.stringify($Manifest);
+               $$ManifestJSON = JSON.stringify(JSON.parse($$ManifestJSON),null,2);                             
+                                
+               repo.write('gh-pages','manifest.json', $$ManifestJSON, 'Saving maniest after update!', function(err) {
+                    
+                    if(err){
+                        if(err['error']=='404'){
+                            $("#displayMe").append('<br />Sorry, you do not have permission!'); 
+                            }
+                        }
+                    else{
+                        
+                        var repo = github.getRepo('simple-api', $repo);
+                        repo.fork(function(err) {
+                            
+                            $("#displayMe").append("forking " + $repo + "<br />");                                        
+                         
+                            redirectURL = "http://simple-api.github.io/central/build-3.html?repo=" + $repo + "&oAuth_Token=" + $oAuth_Token + "&account=" + $UserLogin;                                                                                                                        
+                            setTimeout(callback(redirectURL), 5000); 
+                            
+                        });                                     
+                                                                                                                                            
+                        }                             
+                    });   
+                });                 
+              </script>              
+              
+            <div id="displayMe"></div>
+
+          </section>
+
+        <footer>
+          Simple-api is maintained by <a href="https://github.com/simple-api">simple-api</a><br>
+          This page was generated by <a href="http://pages.github.com">GitHub Pages</a>. Tactile theme by <a href="https://twitter.com/jasonlong">Jason Long</a>.
+        </footer>
+
+        
+      </div>
+    </div>
+  </body>
+</html>

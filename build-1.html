@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="-1" />    
+    
+    <link href='https://fonts.googleapis.com/css?family=Chivo:900' rel='stylesheet' type='text/css'>
+    
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="stylesheets/pygment_trac.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print" />
+    
+    <script src="http://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>
+    <script src="javascripts/oauth.js" type="text/javascript"></script>
+    <script src="javascripts/mustache.js" type="text/javascript"></script>
+    <script src="javascripts/utilities.js" type="text/javascript"></script>
+    <script src="javascripts/tabletop.js" type="text/javascript"></script>
+
+    <script src="javascripts/underscore-min.js" type="text/javascript"></script>
+    <script src="javascripts/base64.js" type="text/javascript"></script>
+    <script src="javascripts/github.js" type="text/javascript"></script>
+    
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <title>Simple API</title>
+  </head>
+
+  <body>
+    <div id="container">
+      <div class="inner">
+
+        <header>
+          <h1><a href="index.html">Simple API</a></h1>
+          <h2>This is a simple API</h2>
+        </header>
+
+        <section id="downloads" class="clearfix">
+          <a href="https://github.com/simple-api/simple-api-control/zipball/master" id="download-zip" class="button"><span>Download .zip</span></a>
+          <a href="https://github.com/simple-api/simple-api-control/tarball/master" id="download-tar-gz" class="button"><span>Download .tar.gz</span></a>
+          <a href="https://github.com/simple-api/simple-api-control/" id="view-on-github" class="button"><span>View on GitHub</span></a>
+        </section>
+
+        <hr>
+
+        <section id="main_content">
+         
+            <h1>Select Account / Organization</h1>
+            
+            <p>You will be forking this API to your Github account, you can either put under your primary account or select from any of the organizations you are a member of.</p>
+            <p>You can ony fork a repo once to any account or organization, so if you wish to use a template more than once, create a new organization for it before continueing.</p>
+  
+            <Form action="build-2.html" method="get" style="background-color: #E8E8E8;">
+                <input type="hidden" name="repo" id="repo" value="" />
+                <input type="hidden" name="oAuth_Token" id="oAuth_Token" value="" />
+                <p align="center"><strong>Choose which account / organization would you like to fork API under?</strong> <select id="account" name="account"></select></p>
+                <p align="center"><input type="submit" name="go" value="Continue Forking API" /></p>
+            </form>  
+              
+            <div id="displayMe"></div>
+            
+              <script type="text/javascript"> 
+              
+                function callback(url){
+                    return function(){
+                        location.href=url;
+                    }
+                }              
+              
+                $repo = getUrlVar('repo');   
+                $cleanrepo = $repo.replace("api-","");
+                document.getElementById("repo").value = $repo;
+              
+               // alert("repo: " + $repo);
+                
+                OAuth.initialize('afPUMVzeX4oG31HVPlLM7kTQEHQ');
+                OAuth.callback('github', function(err, result) {
+                    
+                    $oAuth_Token = result.access_token;
+                    document.getElementById("oAuth_Token").value = $oAuth_Token;
+                  
+                    var github = new Github({
+                        token: $oAuth_Token,
+                        auth: "oauth"
+                        });
+              
+                    var repo = github.getRepo('simple-api', 'central');
+
+                    var $User = "";
+                    var $UserLogin = "";
+
+                    $DisplayMe = "";
+                    var user = github.getUser();
+                    user.show('', function(err, thisuser) {
+                        
+                       $User = thisuser; 
+                       $UserLogin = $User['login'];   
+
+                       $("#account").append("<option>" + $UserLogin + "</option>"); 
+                       
+                       user.orgs(function(err, $orgs) {
+                           
+                           $.each($orgs, function(s, $org) {
+
+                                $("#account").append("<option>" + $org.login + "</option>"); 
+                           
+                                });
+                            });
+                                       
+                        });
+                    });
+              </script>             
+
+          </section>
+
+        <footer>
+          Simple-api is maintained by <a href="https://github.com/simple-api">simple-api</a><br>
+          This page was generated by <a href="http://pages.github.com">GitHub Pages</a>. Tactile theme by <a href="https://twitter.com/jasonlong">Jason Long</a>.
+        </footer>
+
+        
+      </div>
+    </div>
+  </body>
+</html>
