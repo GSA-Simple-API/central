@@ -18,5 +18,9 @@
   {
     "account": "kinlane",
     "template": "api-offices"
+  },
+  {
+    "account": "kinlane",
+    "template": "api-3-factor-x"
   }
 ]
