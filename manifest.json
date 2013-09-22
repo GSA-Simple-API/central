@@ -1,8 +1,16 @@
 [
   {
     "account": "simple-api",
-    "template": "simple-api"
+    "template": "api-people"
   },
+  {
+    "account": "simple-api",
+    "template": "api-3-factor-x"
+  },
+  {
+    "account": "simple-api",
+    "template": "api-offices"
+  },  
   {
     "account": "kinlane",
     "template": "api-people"
