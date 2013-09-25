@@ -26,5 +26,12 @@
         "repo": "api-programs",
         "image": "https://s3.amazonaws.com/kinlane-productions/bw-icons/bw-programs.png",
         "description": "This is a programs API template"
+    },
+    {
+        "id": "4",
+        "name": "Press API",
+        "repo": "api-press",
+        "image": "https://s3.amazonaws.com/kinlane-productions/bw-icons/bw-news-icon.png",
+        "description": "This is a press release API template"
     }
 ]
