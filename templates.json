@@ -19,5 +19,12 @@
         "repo": "api-3-factor-x",
         "image": "https://s3.amazonaws.com/kinlane-productions/bw-icons/3-factor-x.png",
         "description": "This is a 3 factor x API template"
+    },
+    {
+        "id": "4",
+        "name": "Programs API",
+        "repo": "api-programs",
+        "image": "https://s3.amazonaws.com/kinlane-productions/bw-icons/bw-programs.png",
+        "description": "This is a programs API template"
     }
 ]
