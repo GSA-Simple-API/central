@@ -26,5 +26,9 @@
   {
     "account": "kinlane",
     "template": "api-people"
+  },
+  {
+    "account": "kinlane",
+    "template": "api-offices"
   }
 ]
