@@ -104,7 +104,8 @@
                     
                     if(err){
                         if(err['error']=='404'){
-                            $("#displayMe").append('<br />Sorry, you do not have permission!'); 
+                            $("#displayMe").append('<br /><center>Sorry, you do not have permission!</center>'); 
+                            document.getElementById("loading").style.display = 'none';
                             }
                         }
                     else{
