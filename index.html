@@ -62,6 +62,13 @@
                 </tr>                                                                                               
             </script>
             
+            <script id="apiListingTemplate2" type="text/template">       
+                <tr>
+                    <td width="125" valign="top" align="center"><a href="http://simple-api.github.io/{{repo}}"><img src="{{image}}" width="100" align="left" style="padding: 15px;" /></a></td>
+                    <td valign="middle" align="left" style="text-align:left; vertical-align: middle;"><a href="http://simple-api.github.io/{{repo}}" style="color: #000;"><strong>{{name}}</strong></a> - {{description}}</td>
+                </tr>                                                                                               
+            </script>            
+            
             <div class="apiListingContainer">
                  <table id="apiListing" style="padding-left: 25px;" width="75%"></table>
             </div>  
@@ -75,26 +82,26 @@
                     
                 $.getJSON('templates.json', function(data) {
                      $.each(data, function(key, val) {
-                        var template = $('#apiListingTemplate').html();
+                         
+                       if($oAuth_Token.length > 5)
+                            {
+                            var template = $('#apiListingTemplate').html();
+                            }
+                       else
+                            {
+                            var template = $('#apiListingTemplate2').html();
+                            }                       
                         var html = Mustache.to_html(template, val);
                         $('#apiListing').append(html);                          
                         });
                     });
                     
                 } 
-                
-            function processURL()
-                {
-                $urls = document.getElementById("actionlink");
-                $.each($urls, function(key, val) {  
-                    alert(val);
-                    });  
-                }                
+                               
             </script>
     
             <script type="text/javascript">
                 listAPIs();
-                processURL();
             </script>         
                   
           </section>
