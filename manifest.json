@@ -22,17 +22,5 @@
   {
     "account": "gbinal",
     "template": "api-people"
-  },
-  {
-    "account": "kinlane",
-    "template": "api-people"
-  },
-  {
-    "account": "kinlane",
-    "template": "api-offices"
-  },
-  {
-    "account": "kinlane",
-    "template": "api-programs"
   }
 ]

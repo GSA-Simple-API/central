@@ -38,8 +38,52 @@
          
              <h1>About</h1>
              
-                    
-                  
+            <p>Simple API is about empowering a controlled group with the ability to deploy simple APIs, without deploying any infrastructure.  Users can select from a pre-defined set of API designs.</p> 
+            
+            <p>Each API design lives as a Github repository and uses a JSON file as a data store. The API design is generated using Swagger. Each repository contains a JSON data store, Swagger API definition and a home page to view and interact with API through its documentation.</p>
+            
+            <p>When a user decides to fork an API design, using Github the API template is forked and replicated under their own Github account. When each API is forked, it triggers the generation of a REST interface generated from its Swagger definition and connected to the JSON data store that is stored within the Github repository.</p>  
+            
+            <p>The ability to fork any API template is open to anyone, but to be able to trigger the generation of a REST interface a user has to be logged into their Github account and added as a "member" of the Simple API central repository.  You can request access by emailing <a href="mailto: info@apievangelist.com">Kin Lane</a>.</p>  
+            
+            <p>Once an API is deployed the data provided via the API can be edited within a users forked repository, as well as the ability to manually add fields to the data store, and Swagger API definition and data model (this is for more advanced users).</p> 
+            
+            <p>API Simple is a work in progress. You can submit questions and comments on the API Simple Central Github Issue Tracker.</p>  
+            <hr />
+            
+            <h2>Details</h2>
+            
+            <p>The goal of Simple API is to allow the deployment of common APIs, simply by forking them and managing the data in the JSON data stores. Everything starts with Simple API Central which runs 100% on Github as a Github page</p>
+            
+            <p>Github Central uses API templates that are made up of JSON data stores, Swagger definition and a home page to interact with each API. Currently there are 5 API designs:</p>
+            
+            <ul class="mainlist">
+                <li><a href="http://simple-api.github.io/api-people">People</li>
+                <li><a href="http://simple-api.github.io/api-offices">Offices</li>
+                <li><a href="http://simple-api.github.io/api-3-factor-x">3 Factor X API</li>
+                <li><a href="http://simple-api.github.io/api-programs">Programs</li>
+                <li><a href="http://simple-api.github.io/api-press">Press</li>
+            </ul>  
+            
+            <p>I will be adding more soon, if there are any you'd like to see let me know.</p>
+            
+            <p>The architecture piece that does all the heavy lifting is the server side framework, which will spawn a new REST API for each Simple API that is forked, if a user has been added as "member" to Simple API.</p>
+            
+            <p>The current server side framework is written in PHP and runs on AWS EC2 instance, but is included under php-server in the Simple API Central repository, and can be deployed on any server that runs PHP.</p>
+            
+            <p>Simple API depends on the following technologies to work:</p>
+            
+            <ul class="mainlist">
+                <li>PHP 5.4+</p>
+                <li><a href="https://github.com/">Github</a></p>
+                <li><a href="http://pages.github.com/">Github Pages</a></p>
+                <li><a href="https://github.com/michael/github">Github.js</a></p>
+                <li><a href="http://www.slimframework.com/">Slim REST Framework</a></p>
+                <li><a href="http://oauth.io">oAuth.io</a></p>    
+            </ul>   
+            
+            <p>This project isn't polished for mass replication yet, I'm still working out all the kinks and making it portable. If you'd like to have custom installed implementation, <a href="mailto:info@apievangelist.com">let me know</a>.</p>    
+      
           </section>
 
         <footer>

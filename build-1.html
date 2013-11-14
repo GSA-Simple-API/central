@@ -65,8 +65,7 @@
                 $cleanrepo = $repo.replace("api-","");
                 document.getElementById("repo").value = $repo;
               
-               // alert("repo: " + $repo);
-                
+                // Replace with your oAuth.io token, this will only work under the Simple API @ Github domain
                 OAuth.initialize('afPUMVzeX4oG31HVPlLM7kTQEHQ');
                 OAuth.callback('github', function(err, result) {
                     
