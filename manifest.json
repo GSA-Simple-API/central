@@ -12,28 +12,12 @@
     "template": "api-offices"
   },
   {
-    "account": "kinlane",
+    "account": "simple-api",
     "template": "api-programs"
   },
   {
-    "account": "kinlane",
+    "account": "simple-api",
     "template": "api-press"
-  },
-  {
-    "account": "kinlane",
-    "template": "api-3-factor-x"
-  },
-  {
-    "account": "kinlane2",
-    "template": "api-people"
-  },
-  {
-    "account": "kinlane2",
-    "template": "api-offices"
-  },
-  {
-    "account": "kinlane",
-    "template": "api-programs"
   },
   {
     "account": "gbinal",
