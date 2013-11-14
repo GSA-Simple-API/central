@@ -22,5 +22,9 @@
   {
     "account": "gbinal",
     "template": "api-people"
+  },
+  {
+    "account": "kinlane",
+    "template": "api-people"
   }
 ]
