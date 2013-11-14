@@ -23,6 +23,16 @@
     <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
     
+    <script type="text/javascript"> 
+  
+        $UserLogin = getUrlVar('account'); 
+        $repo = getUrlVar('repo');   
+        $cleanrepo = $repo.replace("api-","");
+     
+        $oAuth_Token = getUrlVar('oAuth_Token'); 
+        
+    </script>
+    
   </head>
 
   <body>
@@ -42,7 +52,7 @@
                 <tr>
                     <td width="125" valign="top" align="center"><a href="http://simple-api.github.io/{{repo}}"><img src="{{image}}" width="100" align="left" style="padding: 15px;" /></a></td>
                     <td valign="middle" align="left" style="text-align:left; vertical-align: middle;"><a href="http://simple-api.github.io/{{repo}}" style="color: #000;"><strong>{{name}}</strong></a> - {{description}}</td>
-                    <td valign="middle" align="middle" style="text-align:left; vertical-align: middle;"><a href="build.html?repo={{repo}}" style="color: #000;"><strong>Fork</strong></a></td>
+                    <td valign="middle" align="middle" style="text-align:left; vertical-align: middle;"><a href="build.html?repo={{repo}}" style="color: #000;" id="actionlink"><strong>Fork</strong></a></td>
                 </tr>                                                                                               
             </script>
             
@@ -67,10 +77,19 @@
                     });
                     
                 } 
+                
+            function processURL()
+                {
+                $urls = document.getElementById("actionlink");
+                $.each($urls, function(key, val) {  
+                    alert(val);
+                    });  
+                }                
             </script>
     
             <script type="text/javascript">
                 listAPIs();
+                processURL();
             </script>         
                   
           </section>
